@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Lab5KeyboardInput {
+public class Lab5KeyboardInput1 {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Please enter your name, followed by the return key.");

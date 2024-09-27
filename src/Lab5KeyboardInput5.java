@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Lab5KeyboardInput2 {
+public class Lab5KeyboardInput5 {
 
     public static void summariseCircle(double radius) {
         double circumference = 2 * Math.PI * radius;
