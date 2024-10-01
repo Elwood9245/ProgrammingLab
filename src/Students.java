@@ -1,3 +1,4 @@
+//Inheritance with Person and override say Hello to show one's GPA.
 public class Students extends Person{
 
     private double studentGPA;
