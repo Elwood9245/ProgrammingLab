@@ -21,6 +21,7 @@ public class savingAccount extends BankAccount{
         }
     }
 
+    //Calculate the balance with interest.
     public void addInterest(){
         setBalance(getBalance() * (1 + interestRate / 100.0));
     }
