@@ -39,10 +39,7 @@ public class BankAccount {
     }
 
     public void withdrawFunds(double num){
-        if(num > getBalance()){
-            System.out.println("You do not have enough funds!");
-        }
-        else if (num > 0) {
+        if (num > 0) {
         setBalance(getBalance() - num);
         System.out.println("Transaction Success");
         System.out.println("You have withdraw " + num + " pounds.");
