@@ -1,7 +1,7 @@
 
 public class BankAccount {
 
-    private String name;
+    private Person person;
     private int accountNumber;
     private double balance;
     private static int nextAccountNumber = 0;
@@ -17,8 +17,8 @@ public class BankAccount {
     * so "static" is a must.
     */
 
-    public BankAccount(String name){
-        this.name = name;
+    public BankAccount(Person person){
+        this.person = person;
         this.balance = balance = 0.0;
         this.accountNumber = nextAccountNumber;
         ++nextAccountNumber;
@@ -67,20 +67,48 @@ public class BankAccount {
     @Override
     public String toString() {
         return "BankAccount{" +
-                "name='" + name + '\'' +
+                "person=" + person.getName() + '\'' +
                 ", accountNumber=" + accountNumber +
                 ", balance=" + balance +
                 '}';
     }
 
+    public void transferFunds(double amount, BankAccount bankAccount){
+        if (amount > getBalance()){
+            System.out.println("You do not have enough funds!");
+        }
+        else if (amount > 0) {
+            setBalance(getBalance() - amount);
+            bankAccount.setBalance(bankAccount.getBalance() + amount);
+            System.out.println("Transfer Success");
+            System.out.println("You have transferred " + amount +
+                    " pounds to account number " + bankAccount.getAccountNumber() + ".");
+        }
+        else {
+            System.out.println("You should enter a positive number!");
+            }
+    }
+
     public static void main(String[] args) {
-        BankAccount a = new BankAccount("Elwood1");
-        BankAccount b = new BankAccount("Elwood2");
+        Person person1 = new Person("Elwood1", 25);
+        Person person2 = new Person("Elwood2", 30);
+
+        BankAccount a = new BankAccount(person1);
+        BankAccount b = new BankAccount(person1);
+
         System.out.println(a.getAccountNumber()); // Output: 0
         System.out.println(b.getAccountNumber()); // Output: 1
 
+        //deposit & withdraw test
         a.depositFunds(100.0);
-        a.withdrawFunds(98.0);
+        a.withdrawFunds(20.0);
+
         System.out.println(a.toString());
+        System.out.println(b.toString());
+
+        //Transfer test
+        a.transferFunds(50.0, b);
+        System.out.println(a.toString());
+        System.out.println(b.toString());
     }
 }
